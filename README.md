@@ -34,3 +34,8 @@ Live demo : https://stivi00.github.io/meet/
 - Given: The user is currently browsing the event details page
 - When: The user selects the "View Charts" or accesses a particular tab within the event details page
 - Then: The application fetches data and creates visually engaging charts, showcasing them to the user within the event details page. This serves to offer insights and event-related statistics
+
+
+## Serverless functions
+
+In the Meet app, serverless functions will play a crucial role in handling authorization for accessing public calendar events from the Google Calendar API. Users must be authorized to retrieve event data for rendering in the React app. This authorization is facilitated by serverless functions, offering a more efficient alternative to building and maintaining a full server for this purpose. In this context, serverless functions will generate and provide access tokens, ensuring secure access to the Google Calendar API. AWS Lambda is the chosen cloud-service provider for implementing these serverless functions, enhancing the app's architecture with improved scalability and cost-effectiveness

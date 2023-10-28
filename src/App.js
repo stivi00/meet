@@ -1,11 +1,12 @@
+import EventList from './components/EventList';
 import './App.css';
 
-function App() {
+const App = () => {
     return (
         <div className='App'>
-            <h1>Hello fixed world</h1>
+            <EventList />
         </div>
     );
-}
+};
 
 export default App;

@@ -29,14 +29,14 @@ describe('<EventList /> component', () => {
 });
 
 describe('<EventList /> integration', () => {
-    test('renders a list of 32 events when the app is mounted and rendered', async () => {
+    test('renders a non-empty list of events when the app is mounted and rendered', async () => {
         const AppComponent = render(<App />);
         const AppDOM = AppComponent.container.firstChild;
         const EventListDOM = AppDOM.querySelector('#event-list');
         await waitFor(() => {
             const EventListItems =
                 within(EventListDOM).queryAllByRole('listitem');
-            expect(EventListItems.length).toBeGreaterThan(0);
+            expect(EventListItems.length).toBe(32);
         });
     });
 });

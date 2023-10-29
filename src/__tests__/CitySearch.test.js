@@ -2,11 +2,12 @@
 /* eslint-disable no-undef */
 /* eslint-disable testing-library/prefer-screen-queries */
 /* eslint-disable testing-library/render-result-naming-convention */
+/* eslint-disable testing-library/no-node-access */
 
-import { render } from '@testing-library/react';
+import { render, within, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import CitySearch from '../components/CitySearch';
-
+import App from '../App';
 import { extractLocations, getEvents } from '../api';
 
 describe('<CitySearch/> component', () => {
@@ -96,5 +97,28 @@ describe('<CitySearch/> component', () => {
         await user.click(BerlinGermanySuggestion);
 
         expect(cityTextBox).toHaveValue(BerlinGermanySuggestion.textContent);
+    });
+});
+
+// INTEGRATION TEST
+
+describe('<CitySearch /> integration', () => {
+    test('renders suggestions list when the app is rendered.', async () => {
+        const user = userEvent.setup();
+        const AppComponent = render(<App />);
+        const AppDOM = AppComponent.container.firstChild;
+
+        const CitySearchDOM = AppDOM.querySelector('#city-search');
+        const cityTextBox = within(CitySearchDOM).queryByRole('textbox');
+        await user.click(cityTextBox);
+
+        const allEvents = await getEvents();
+        const allLocations = extractLocations(allEvents);
+
+        await waitFor(() => {
+            const suggestionListItems =
+                within(CitySearchDOM).queryAllByRole('listitem');
+            expect(suggestionListItems.length).toBe(allLocations.length + 1);
+        });
     });
 });

@@ -6,7 +6,7 @@ import App from '../App';
 import { render, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-const feature = loadFeature('./src/features/showAndHideEventsDetails.feature');
+const feature = loadFeature('./src/features/showHideAnEventsDetails.feature');
 
 defineFeature(feature, (test) => {
     //SCENARIO 1

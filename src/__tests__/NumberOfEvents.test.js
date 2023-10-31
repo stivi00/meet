@@ -1,14 +1,17 @@
 /* eslint-disable testing-library/prefer-screen-queries */
 /* eslint-disable testing-library/no-render-in-setup */
 
-import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import NumberOfEvents from '../components/NumberOfEvents';
+import { render } from '@testing-library/react';
 
 describe('<NumberOfEvents /> component', () => {
     let NumberOfEventsComponent;
+
     beforeEach(() => {
-        NumberOfEventsComponent = render(<NumberOfEvents />);
+        NumberOfEventsComponent = render(
+            <NumberOfEvents setCurrentNOE={() => {}} setErrorAlert={() => {}} />
+        );
     });
 
     test('renders number of events text input', () => {
@@ -25,9 +28,7 @@ describe('<NumberOfEvents /> component', () => {
     test('number of events text box value changes when the user types in it', async () => {
         const user = userEvent.setup();
         const numberTextBox = NumberOfEventsComponent.queryByRole('textbox');
-        await user.type(numberTextBox, '123');
-
-        // 32 (the default value already written) + 123
-        expect(numberTextBox).toHaveValue('32123');
+        await user.type(numberTextBox, '{backspace}{backspace}10');
+        expect(numberTextBox).toHaveValue('10');
     });
 });

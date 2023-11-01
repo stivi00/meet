@@ -2,9 +2,21 @@
 
 *{
   margin: 0;
+
 }
+
+:root{
+  --header-color: #1d2d44;
+  --background-color: #f0ebd8;
+  --list-items: #3e5c76;
+  --header-title: #f0ebd8;
+  --text-color: #f0ebd8;
+}
+
+
+
 .App {
-  background-color: #edede9;
+  background-color: var(--background-color);
   text-align: center;
 }
 
@@ -14,12 +26,12 @@
 
 .header-wrapper{
   padding: 2%;
-  background-color:#3a5a40 ;
+  background-color:var(--header-color);
   width: 100%;
 }
 
 .header-title{
-  color: #dad7cd;
+  color: var( --header-title);
   text-decoration:  dotted underline;
   font-size: 40px;
   letter-spacing: 0.3em;
@@ -123,7 +135,7 @@ input[type="number"] {
 .content-wrapper{
   max-width: 95%;
   margin: 0 auto;
-  background-color: #edede9;
+  background-color: var(--background-color);
 }
 
 #event-list{
@@ -133,8 +145,8 @@ input[type="number"] {
 }
 
 .event{
-  background-color: #234333;
-  color: #fff;
+  background-color: var(--list-items);
+  color: var( --text-color);
 }
 
 .charts-container{

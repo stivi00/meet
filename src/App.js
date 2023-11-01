@@ -20,8 +20,17 @@ const App = () => {
     const [warningAlert, setWarningAlert] = useState('');
 
     useEffect(() => {
+        if (navigator.onLine) {
+            // set the warning alert message to an empty string ""
+            setWarningAlert('');
+        } else {
+            // set the warning alert message to a non-empty string
+            setWarningAlert(
+                'You are offline! Note that some events may not be up to date. '
+            );
+        }
         fetchData();
-    }, [currentCity]);
+    }, [currentCity, currentNOE]);
 
     const fetchData = async () => {
         const allEvents = await getEvents();

@@ -1,11 +1,24 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+*{
+
+  margin: 0;
+}
 .App {
   text-align: center;
-  padding: 2% 5%;
 }
 
 .App * {
   box-sizing: border-box;
+}
+
+.header-wrapper{
+  padding: 2%;
+  background-color:#83c5be ;
+  width: 100%;
+}
+
+.header-title{
+  color: #fff;
 }
 
 ul {
@@ -29,6 +42,7 @@ input[type="number"] {
   height: 38px;
   margin-bottom: 20px;
 }
+
 
 .city {
   width: 250px;
@@ -93,4 +107,39 @@ input[type="number"] {
   left: 20px;
   width: 250px;
   z-index: 1000;
+}
+
+.charts-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 768px){
+  .charts-container{
+    grid-template-columns: 1fr;
+  }
+  .recharts-responsive-container:first-of-type{
+    margin-left: 5%;
+  }
+  #event-list{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 620px){
+  .user-input{
+    flex-direction: column;
+    width: 60%;
+    left: 42%;
+  }
+  #city-search{
+    margin: 0;
+    width: auto;
+  }
+}
+
+@media (max-width: 480px){
+  #event-list{
+    grid-template-columns: 1fr;
+  }
 }

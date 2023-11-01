@@ -23,10 +23,8 @@ const App = () => {
 
     useEffect(() => {
         if (navigator.onLine) {
-            // set the warning alert message to an empty string ""
             setWarningAlert('');
         } else {
-            // set the warning alert message to a non-empty string
             setWarningAlert(
                 'You are offline! Note that some events may not be up to date. '
             );
@@ -46,23 +44,28 @@ const App = () => {
 
     return (
         <div className='App'>
-            <h1>Meet App</h1>
-            <div className='alerts-container'>
-                {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
-                {warningAlert.length ? (
-                    <WarningAlert text={warningAlert} />
-                ) : null}
-                {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
+            <div className='header-wrapper'>
+                <h1 className='header-title'>MeetMate</h1>
+                <br></br>
+                <div className='alerts-container'>
+                    {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
+                    {warningAlert.length ? (
+                        <WarningAlert text={warningAlert} />
+                    ) : null}
+                    {errorAlert.length ? (
+                        <ErrorAlert text={errorAlert} />
+                    ) : null}
+                </div>
+                <CitySearch
+                    allLocations={allLocations}
+                    setCurrentCity={setCurrentCity}
+                    setInfoAlert={setInfoAlert}
+                />
+                <NumberOfEvents
+                    setCurrentNOE={setCurrentNOE}
+                    setErrorAlert={setErrorAlert}
+                />
             </div>
-            <CitySearch
-                allLocations={allLocations}
-                setCurrentCity={setCurrentCity}
-                setInfoAlert={setInfoAlert}
-            />
-            <NumberOfEvents
-                setCurrentNOE={setCurrentNOE}
-                setErrorAlert={setErrorAlert}
-            />
             <div className='charts-container'>
                 <CityEventsChart allLocations={allLocations} events={events} />
                 <EventGenresChart events={events} />

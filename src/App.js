@@ -66,11 +66,16 @@ const App = () => {
                     setErrorAlert={setErrorAlert}
                 />
             </div>
-            <div className='charts-container'>
-                <CityEventsChart allLocations={allLocations} events={events} />
-                <EventGenresChart events={events} />
+            <div className='content-wrapper'>
+                <div className='charts-container'>
+                    <CityEventsChart
+                        allLocations={allLocations}
+                        events={events}
+                    />
+                    <EventGenresChart events={events} />
+                </div>
+                <EventList events={events} />
             </div>
-            <EventList events={events} />
         </div>
     );
 };

@@ -1,9 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
-*{
 
+*{
   margin: 0;
 }
 .App {
+  background-color: #edede9;
   text-align: center;
 }
 
@@ -13,12 +14,15 @@
 
 .header-wrapper{
   padding: 2%;
-  background-color:#83c5be ;
+  background-color:#3a5a40 ;
   width: 100%;
 }
 
 .header-title{
-  color: #fff;
+  color: #dad7cd;
+  text-decoration:  dotted underline;
+  font-size: 40px;
+  letter-spacing: 0.3em;
 }
 
 ul {
@@ -54,6 +58,13 @@ input[type="number"] {
   margin: auto;
   position: relative;
 }
+
+#number-of-events label{
+  padding-bottom: 5px;
+  display: block;
+  color: #fff;
+}
+
 
 .suggestions {
   width: 250px;
@@ -107,6 +118,23 @@ input[type="number"] {
   left: 20px;
   width: 250px;
   z-index: 1000;
+}
+
+.content-wrapper{
+  max-width: 95%;
+  margin: 0 auto;
+  background-color: #edede9;
+}
+
+#event-list{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.event{
+  background-color: #234333;
+  color: #fff;
 }
 
 .charts-container{
